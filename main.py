@@ -2,16 +2,16 @@ import csv
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
+import numpy as np
 
 os.environ.setdefault('OMP_NUM_THREADS', '1')
 os.environ.setdefault('OPENBLAS_NUM_THREADS', '1')
 os.environ.setdefault('MKL_NUM_THREADS', '1')
 os.environ.setdefault('NUMEXPR_NUM_THREADS', '1')
 
-import numpy as np
 
 CHUNK_SIZE = 5_000_000
-N_VALUES = [100_000_000_000]
+N_VALUES = [1_000_000, 10_000_000, 100_000_000, 1_000_000_000, 10_000_000_000, 100_000_000_000]
 M_VALUES = [1, 2, 4, 8, 16, 32, 64, 128]
 RESULTS_DIR = 'results'
 FILE_PATH = os.path.join(RESULTS_DIR, 'pi_monte_carlo_parallel_results.csv')
